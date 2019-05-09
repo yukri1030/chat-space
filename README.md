@@ -23,28 +23,32 @@ Things you may want to cover:
 
 * ...
 
-##group
--|id|integer|null:false, foreign_key: true|
- |name|varchar(8)|null:false, foreign_key: true, unique:true|
+## groupテーブル
+
+|id |integer |null:false, foreign_key: true|
+|name |varchar(8) |null:false, foreign_key: true, unique:true|
 
 
-###Asociation
-- belongs_to: member,through:user
-- has_many :chats,through: comments
+### Asociation
+- belongs_to :member, through:user
+- has_many :chats, through: comments
 - has_many :comments, through chat
 
-##member
+## memberテーブル
+
 |group_id|null:false, foreign_key: true|
 |user_id|null:false, foreign_key: true|
 |user_name|null:false, foreign_key: true|
 
-###Asosication
+### Asosication
+
 - belongs_to :group
 - has_many :users 
 
 
 
-##chatテーブル
+## chatテーブル
+
 |Column|Type|Opitions|
 ｜------|----|---------|
 |id|integer|null:false, foreign_key: true|
@@ -53,14 +57,16 @@ Things you may want to cover:
 |comments|body|
 |user_id|integer|null:false, foreign_key: true|
 
-###Asociation
+### Asociation
 - belongs_to :user
 - has_many :comments
 - has_through :group
 
 
 
-##comments
+## commentsテーブル
+
+|Column|Type|Opitions|
 |id|integer|null:false, foreign_key: true|
 |chat_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
@@ -68,6 +74,6 @@ Things you may want to cover:
 |body|text|
 |img|MEDIUMBLOB|
 
-###Asociation
+### Asociation
 - belongs_to :user, through group
 - belongs_to :chat, through user
