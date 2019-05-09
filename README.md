@@ -22,3 +22,52 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+##group
+-|id|integer|null:false, foreign_key: true|
+ |name|varchar(8)|null:false, foreign_key: true, unique:true|
+
+
+###Asociation
+- belongs_to: member,through:user
+- has_many :chats,through: comments
+- has_many :comments, through chat
+
+##member
+|group_id|null:false, foreign_key: true|
+|user_id|null:false, foreign_key: true|
+|user_name|null:false, foreign_key: true|
+
+###Asosication
+- belongs_to :group
+- has_many :users 
+
+
+
+##chatテーブル
+|Column|Type|Opitions|
+｜------|----|---------|
+|id|integer|null:false, foreign_key: true|
+|chat|text|
+|img|MEDIUMBLOB｜
+|comments|body|
+|user_id|integer|null:false, foreign_key: true|
+
+###Asociation
+- belongs_to :user
+- has_many :comments
+- has_through :group
+
+
+
+##comments
+|id|integer|null:false, foreign_key: true|
+|chat_id|integer|null:false, foreign_key: true|
+|user_id|integer|null:false, foreign_key: true|
+|group_id|integer|null:false, foreign_key: true|
+|body|text|
+|img|MEDIUMBLOB|
+
+###Asociation
+- belongs_to :user, through group
+- belongs_to :chat, through user
