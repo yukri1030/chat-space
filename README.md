@@ -109,3 +109,4 @@ Things you may want to cover:
 ### Asociation
 - belongs_to :user, through group
 - belongs_to :chat, through user
+
