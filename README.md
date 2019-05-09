@@ -23,10 +23,30 @@ Things you may want to cover:
 
 * ...
 
+## userテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|name|varchar(8)|null: false|
+|e-mail|varchar(30)|null: false|
+|group_id|integer|null: false, foreign_key: true|
+
+### Asosiation
+- belongs_to: group
+- has_many :comments
+
+
+
+
 ## groupテーブル
 
-|id |integer |null:false, foreign_key: true|
-|name |varchar(8) |null:false, foreign_key: true, unique:true|
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null:false, foreign_key: true|
+|name|varchar(8)|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
 
 
 ### Asociation
@@ -36,9 +56,14 @@ Things you may want to cover:
 
 ## memberテーブル
 
-|group_id|null:false, foreign_key: true|
-|user_id|null:false, foreign_key: true|
-|user_name|null:false, foreign_key: true|
+|Column|Type|Options|
+|------|----|-------|
+|group_id|integer|null:false, foreign_key: true|
+|user_id|null: false, foreign_key :true|
+|user_name|null: false, foreign_key: true|
+
+
+
 
 ### Asosication
 
@@ -50,8 +75,9 @@ Things you may want to cover:
 ## chatテーブル
 
 |Column|Type|Opitions|
-｜------|----|---------|
+|------|----|---------|
 |id|integer|null:false, foreign_key: true|
+|------|----|---------|
 |chat|text|
 |img|MEDIUMBLOB｜
 |comments|body|
@@ -66,13 +92,19 @@ Things you may want to cover:
 
 ## commentsテーブル
 
+
 |Column|Type|Opitions|
+|------|----|---------|
 |id|integer|null:false, foreign_key: true|
+|------|----|---------|
 |chat_id|integer|null:false, foreign_key: true|
-|user_id|integer|null:false, foreign_key: true|
-|group_id|integer|null:false, foreign_key: true|
+|user_id|intefer｜null:false, foregin_key :true|
+|group_id|interger|null:false, foreign_key: true|
 |body|text|
+|comments|body|
 |img|MEDIUMBLOB|
+
+
 
 ### Asociation
 - belongs_to :user, through group
