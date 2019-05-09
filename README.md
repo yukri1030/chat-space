@@ -43,7 +43,7 @@ Things you may want to cover:
 ### Asosication
 
 - belongs_to :group
-- has_many :users 
+- has_many :users
 
 
 
