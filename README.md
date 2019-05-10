@@ -27,7 +27,7 @@ Things you may want to cover:
 |------|----|---------|
 |id|integer|null:false, foreign_key: true|
 |------|----|---------|
-|name|string|nill:false, foreign_key: true|
+|name|string|nill:false, foreign_key: true, uniqe:true|
 |e-mail|varchar(30)|null:false|
 |group_id|null:false, foreign_key: true|
 |message_id|null:false, foreign_key: true|
@@ -42,7 +42,7 @@ Things you may want to cover:
 |Column|Type|Opitions|
 |------|----|---------|
 |id|integer|null:false, foreign_key: true｜
-|name|string|null: false|
+|name|string|null: false,uniqe:true|
 |member_id|integer|null:false, foreign_key: true|
 
 ### Adociation
@@ -52,9 +52,10 @@ Things you may want to cover:
 
 |Column|Type|Opitions|
 |------|----|---------|
-|id|integer|null:false, foreign_key: true｜
+|id|integer|null:false, foreign_key: true|
 |name|string|null: false|
-|group_id|integer|null:false, foreign_key: true｜
+|group_id|integer|null:false, foreign_key: true|
+|comment-id|foreign_key: true|
 
 - belongs_to: group
 
@@ -69,4 +70,30 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to: user
+- belongs_to: users
+- has_many: comments
+
+
+
+## commentテーブル
+
+|Column|Type|Opitions|
+|------|----|---------|
+|id|integer|null:false, foreign_key: true｜
+|message-id|null:false, foreign_key: true|
+
+
+
+### Association
+- has_many :messages
+
+
+## conversationテーブル（中間テーブル）
+
+|Column|Type|Opitions|
+|------|----|---------|
+|message_id|integer|null:false, foreign_key: true｜
+|comment-id|integer|null:false, foreign_key: true｜
+
+gem 'haml-rails'
+gem 'erb2haml'
