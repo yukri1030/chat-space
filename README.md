@@ -29,11 +29,11 @@ Things you may want to cover:
 |------|----|---------|
 |name|string|nill:false, foreign_key: true, uniqe:true|
 |e-mail|varchar(30)|null:false|
-|group_id|null:false, foreign_key: true|
 |message_id|null:false, foreign_key: true|
+|member_id|integer|null:false, foreign_key: true|
 
 ### Asociation
-- belongs_to :group
+- has_many :groups , through :member
 - has_many :messages
 
 
@@ -46,18 +46,19 @@ Things you may want to cover:
 |member_id|integer|null:false, foreign_key: true|
 
 ### Adociation
-- has_many: members 
+- has_many: members through: users
 
 ## memberテーブル
 
 |Column|Type|Opitions|
 |------|----|---------|
 |id|integer|null:false, foreign_key: true|
-|name|string|null: false|
+|user_id|string|null: false,foreign_key :true|
 |group_id|integer|null:false, foreign_key: true|
-|comment-id|foreign_key: true|
 
-- belongs_to: group
+
+- belongs_to: group 
+- belongs_to: user
 
 
 ## messageテーブル
@@ -70,30 +71,8 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to: users
-- has_many: comments
+- belongs_to: user 
 
-
-
-## commentテーブル
-
-|Column|Type|Opitions|
-|------|----|---------|
-|id|integer|null:false, foreign_key: true｜
-|message-id|null:false, foreign_key: true|
-
-
-
-### Association
-- has_many :messages
-
-
-## conversationテーブル（中間テーブル）
-
-|Column|Type|Opitions|
-|------|----|---------|
-|message_id|integer|null:false, foreign_key: true｜
-|comment-id|integer|null:false, foreign_key: true｜
 
 gem 'haml-rails'
 gem 'erb2haml'
