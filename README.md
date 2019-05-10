@@ -110,3 +110,5 @@ Things you may want to cover:
 - belongs_to :user, through group
 - belongs_to :chat, through user
 
+
+
