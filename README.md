@@ -22,93 +22,60 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## usersテーブル
+|Column|Type|Opitions|
+|------|----|---------|
+|id|integer|null:false, foreign_key: true|
+|------|----|---------|
+|name|string|nill:false, foreign_key: true, uniqe:true|
+|e-mail|varchar(30)|null:false|
+|message_id|null:false, foreign_key: true|
+|member_id|integer|null:false, foreign_key: true|
 
-## userテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|name|varchar(8)|null: false|
-|e-mail|varchar(30)|null: false|
-|group_id|integer|null: false, foreign_key: true|
-
-### Asosiation
-- belongs_to: group
-- has_many :comments
-
-
+### Asociation
+- has_many :groups , through :member
+- has_many :messages
 
 
 ## groupテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|null:false, foreign_key: true|
-|name|varchar(8)|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|Column|Type|Opitions|
+|------|----|---------|
+|id|integer|null:false, foreign_key: true｜
+|name|string|null: false,uniqe:true|
+|member_id|integer|null:false, foreign_key: true|
 
-
-
-### Asociation
-- belongs_to :member, through:user
-- has_many :chats, through: comments
-- has_many :comments, through chat
+### Adociation
+- has_many: members through: users
 
 ## memberテーブル
 
-|Column|Type|Options|
-|------|----|-------|
+|Column|Type|Opitions|
+|------|----|---------|
+|id|integer|null:false, foreign_key: true|
+|user_id|string|null: false,foreign_key :true|
 |group_id|integer|null:false, foreign_key: true|
-|user_id|null: false, foreign_key :true|
-|user_name|null: false, foreign_key: true|
 
 
+- belongs_to: group 
+- belongs_to: user
 
 
-### Asosication
-
-- belongs_to :group
-- has_many :users
-
-
-
-## chatテーブル
+## messageテーブル
 
 |Column|Type|Opitions|
 |------|----|---------|
-|id|integer|null:false, foreign_key: true|
-|------|----|---------|
-|chat|text|
-|img|MEDIUMBLOB｜
-|comments|body|
-|user_id|integer|null:false, foreign_key: true|
+|id|integer|null:false, foreign_key: true｜
+|massage|text|
+|img|string|
 
-### Asociation
-- belongs_to :user
-- has_many :comments
-- has_through :group
+### Association
+
+- belongs_to: user 
 
 
-
-## commentsテーブル
-
-
-|Column|Type|Opitions|
-|------|----|---------|
-|id|integer|null:false, foreign_key: true|
-|------|----|---------|
-|chat_id|integer|null:false, foreign_key: true|
-|user_id|intefer｜null:false, foregin_key :true|
-|group_id|interger|null:false, foreign_key: true|
-|body|text|
-|comments|body|
-|img|MEDIUMBLOB|
-
-
-
-### Asociation
-- belongs_to :user, through group
-- belongs_to :chat, through user
+gem 'haml-rails'
+gem 'erb2haml'
 
 
 
